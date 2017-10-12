@@ -1,9 +1,9 @@
-# SIMPLE CURENCY READ SERVICE
+# SIMPLE CURRENCY READ SERVICE
 
 
 ## Requirements
 
-This application to implement a simple currency read service in .NET. which allow client application send a request with a valid decimal number and return a string represent for that number in human reading format
+This application to implement a simple currency read service with .NET. which allow client application send a request with a valid decimal number and return a string representation of that number in the human reading format
 
 Example : 
 
@@ -12,7 +12,7 @@ Input: 123.45
 Output: ONE HUNDRED AND TWENTY-FIVE DOLLAR AND FOURTY-FIVE CENTS
 
 ## Solutions
-I come with a simple approach. each number will have 2 part before decimal and after decimal. The number after decimal is Cents and before is Dollars amount
+I come with a simple approach. each number will have 2 part before decimal and after the decimal. The number after decimal is Cents and before is Dollars amount
 ```
 Example: 123.45$
 Part1: 123$
@@ -22,11 +22,11 @@ part2 : 45
 The reading number will become simple by reading the chunks of 3 digits then add the unit after those 3 digits.
 
 ``` Read(part1) + DOLLARS + Read(part2) +CENTS ```
-To read Part1, we split full number to multiple chunks ,each chunk has 3 digit and we start in reverse order of number because we want to read from small unit first.  In this example I used string function to split chunks, we can also use LinQ or just a simple using divide and module to get the chunk number. The reason I want to use string because it will help to process a very big number that exceed MaxValue of Int46 (ulong). 
+To read Part1, we split full number to multiple chunks, each chunk has 3 digits and we start in reverse order of number because we want to read from small unit first.  In this example I used a string function to split chunks, we can also use Linq or just a simple using divide and module to get the chunk number. The reason I want to use string because it will help to process a very big number that exceeds MaxValue of Int46 (ulong). 
 
-After we have a chunk of 3 digit, use be logic below to read 3 digit to string.
+After we have a chunk of 3 digits, use be logic below to read 3 digits to string.
 
-we define an array to mapping number to reading word we need 3 array as belows
+we define an array to mapping number to reading a word we need 3 arrays as below
 
 
 ```csharp
@@ -52,9 +52,9 @@ return NUMBERS[number/100] " HUNDRED " + " AND "+ ReadNumber(number%100,"") + Un
 ```
 `example :345 = NUMBERS[3] + ReadNumber(45) = THREE HUNDRED AND FOURTY-FIVE DOLLARS 
 
-When the input is zero the ReadNumber will return string empty in that case we dont concac it to the end result.
+When the input is zero the ReadNumber will return string empty in that case we don't concac it to the end result.
 
-`Example: 400 = NUMBERS[4] + " HUNDRED " (We not add AND here because 00 return empty.)
+`Example: 400 = NUMBERS[4] + " HUNDRED " (We do not add AND here because 00 return empty.)
 
 ```csharp
 public string ReadNumber(int number, string unit="") {
@@ -105,7 +105,7 @@ while(pos > 0) {
 }
 ```
 
-The final end string will be this full numnber concac with cents amount
+The final end string will be this full number concat with cents amount
 
 ```csharp
  if (string.IsNullOrEmpty(results)) return readCents;
@@ -123,7 +123,7 @@ dotnet test akqa-codechallenge/akqa-codechallenge.test.csproj
 ```
 
 # Build & Run
-This application using .NET Core 2.0 , If you are developer with Visual Studio 2017 installed, just need to open and run it as normal project. 
+This application using .NET Core 2.0, If you are a developer with Visual Studio 2017 installed, just need to open and run it as a normal project. 
 
 If you don't have visual studio, Please download .NET Core SDK to build and run it
 
@@ -136,7 +136,7 @@ dotnet run
 ```
 # API Service
 
-The backend is MVC Web API which can be use by any client aplication using Http POST request
+The backend is MVC Web API which can be used by any client application using Http POST request
 
 EndPoint :$HOST/api/v1/converter
 ## Request Format: 
@@ -150,15 +150,15 @@ Content-Type: Application/json
 ## Response
 Service will return below error code
 ### 400 - BAD REQUEST 
-This error return when you send invalid format, invalid number, or using wrong decimal symbol. 
+This error return when you send invalid format, invalid number, or using the wrong decimal symbol. 
 ### 416 Media not supported
 This error return when content type is not set to application/json 
 ### Method not support 
-Then using wrong method, This API only support HTTP Post
+Then using the wrong method, This API only support HTTP Post
 ### 500 Internal error
-Return when server failed to read your valid input number. this will happend when the input >=1000 Trillion. API V2 will add support for bigger number later.
+Return when the server failed to read your valid input number. this will happen when the input >=1000 Trillion. API V2 will add support for bigger number later.
 ### 200 SUCCESSFUL
-This is return when server accept request and successful to process data. The response body is json format of object look like
+This is return when server accepts the request and successful to process data. The response body is json format of object look like
 ```json
 {"number":123456789.0,"read":"ONE HUNDRED AND TWENTY-THREE MILLION AND FOUR HUNDRED AND FIFTY-SIX THOUSAND AND SEVEN HUNDRED AND EIGHTY-NINE DOLLARS","success":true}
 ```
@@ -170,8 +170,9 @@ number: your original number rounded to 2 decimal place
 
 # Knowns Issue
 
-There is an issue with singular, for example it always read Cents and Dollars for just 1 cent or 1 dollar. This is not hard to fix. I may fix it later
+There is an issue with a singular, for example, it always read Cents and Dollars for just 1 cent or 1 dollar. This is not hard to fix. I may fix it later
 
 # Contact
 
-If you encounter with any issue, contact me samuraitruong@hotmail.com
+If you encounter any issue, contact me samuraitruong@hotmail.com
+
