@@ -12,14 +12,14 @@ Input: 123.45
 Output: ONE HUNDRED AND TWENTY-FIVE DOLLAR AND FOURTY-FIVE CENTS
 
 ## Solutions
-I come with a simple approach . each number will have 2 part before decimal and after decimal. The number after decimal is Cents and before is Dollars amount
+I come with a simple approach. each number will have 2 part before decimal and after decimal. The number after decimal is Cents and before is Dollars amount
 ```
 Example: 123.45$
 Part1: 123$
 part2 : 45 
 ```
 
-The reading number will become simple by reading the chunks of 3 digit then add the unit after those 3 digits.
+The reading number will become simple by reading the chunks of 3 digits then add the unit after those 3 digits.
 
 ``` Read(part1) + DOLLARS + Read(part2) +CENTS ```
 To read Part1, we split full number to multiple chunks ,each chunk has 3 digit and we start in reverse order of number because we want to read from small unit first.  In this example I used string function to split chunks, we can also use LinQ or just a simple using divide and module to get the chunk number. The reason I want to use string because it will help to process a very big number that exceed MaxValue of Int46 (ulong). 
@@ -128,7 +128,7 @@ This application using .NET Core 2.0 , If you are developer with Visual Studio 2
 If you don't have visual studio, Please download .NET Core SDK to build and run it
 
 after clone source to your local machine, please run below command
-```
+```bash
 cd akqa-codechallenge
 dotnet restore 
 dotnet run
