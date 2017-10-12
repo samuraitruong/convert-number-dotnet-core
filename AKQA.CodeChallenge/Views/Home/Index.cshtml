@@ -1,46 +1,51 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model  FormViewModel;
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form class="form-horizontal">
-                <fieldset>
+            @using (Html.BeginForm("","", FormMethod.Post, new { @id="form"}))
+            {
+            <fieldset>
 
-                    <!-- Form Name -->
-                    <legend>Please enter number</legend>
+                <!-- Form Name -->
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtName">Your Name</label>
-                        <div class="col-md-4">
-                            <input id="txtName" name="txtName" type="text" placeholder="Your Name" class="form-control input-md" required>
-                            <span class="help-block">Please enter your name</span>
-                        </div>
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label class="col-md-3 control-label" for="txtName">Your Name</label>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => Model.Name, new { @class= "form-control input-lg", placeholder="Enter your name"})
+                        <span asp-validation-for="@Model.Name" class="validation-error"></span>
                     </div>
+                </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="txtSalary">Gross Salary</label>
-                        <div class="col-md-4">
-                            <input id="txtSalary" name="txtSalary" type="text" placeholder="placeholder" class="form-control input-md">
-                            <span class="help-block">Enter your full salary</span>
-                        </div>
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label class="col-md-3 control-label" for="txtSalary">Gross Salary</label>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => Model.Salary, new { @class = "form-control input-lg", placeholder = "Enter your package" })
+                        <span class="help-block">Enter your full package ex: 12100.12</span>
+                        <span asp-validation-for="@Model.Salary"  class="validation-error"></span>
                     </div>
+                </div>
 
-                    <!-- Button -->
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <button id="singlebutton" name="singlebutton" class="btn btn-primary">SHOW MY SALARY</button>
-                        </div>
+                <!-- Button -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button id="singlebutton" name="singlebutton" class="btn btn-success pull-right">SUBMIT</button>
                     </div>
+                </div>
+                <div class="loader">
+                    <img src="~/images/loader.svg" />
+                </div>
 
-                </fieldset>
-            </form>
+            </fieldset>
+            }
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" id="display">
 
         </div>
     </div>

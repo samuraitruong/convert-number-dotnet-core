@@ -23,14 +23,6 @@ namespace AKQA.CodeChallenge.Controllers
             this.service = service;
         }
 
-        [HttpGet]
-        // GET: /<controller>/
-        // This method is not support, just 
-        public IActionResult Get()
-        {
-            return Json(new { Success = true, Read= "One hundress....."});
-        }
-
         [HttpPost]
         public IActionResult Post([FromBody]NumberConvertRequest request )
 		{

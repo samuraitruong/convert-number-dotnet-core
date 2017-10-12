@@ -16,6 +16,7 @@ namespace AKQA.CodeChallenge.Tests
         [InlineData(0.00, "")]
         [InlineData(0.01, "ONE CENTS")]
         [InlineData(0.1, "TEN CENTS")]
+        [InlineData(0.15, "FIFTEEN CENTS")]
         [InlineData(0.8, "EIGHTY CENTS")]
         [InlineData(0.09, "NINE CENTS")]
         [InlineData(0.29, "TWENTY-NINE CENTS")]
@@ -53,7 +54,7 @@ namespace AKQA.CodeChallenge.Tests
         [InlineData(55000000000, "FIFTY-FIVE BILLION DOLLARS")]
         [InlineData(999999999999.99, "NINE HUNDRED AND NINETY-NINE BILLION AND NINE HUNDRED AND NINETY-NINE MILLION AND NINE HUNDRED AND NINETY-NINE THOUSAND AND NINE HUNDRED AND NINETY-NINE DOLLARS AND NINETY-NINE CENTS")]
         [InlineData(7000000000000, "SEVEN TRILLION DOLLARS")]
-        public void ShouldRead_Cents(double input, string expect)
+        public void ShouldReadNumberCorrect(double input, string expect)
         {
             var read = this.service.ConvertToString(input);
             Assert.Equal(expect, read);
