@@ -7,7 +7,7 @@ namespace AKAQ.CodeChallenge.Business
     public class NumberConverterService : INumberConverterService
     {
         string[] NUMBERS = new string[] { "", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN" };
-        string[] TYS = new string[] { "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY" };
+        string[] TYS = new string[] { "", "TWENTY", "THIRTY", "FORTY", "FIFTY", "SIXTY", "SEVENTY", "EIGHTY", "NINETY" };
         string[] TEENS = new string[] { "", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN" };
         string[] GROUPS = new string[] {" DOLLARS", " THOUSAND", " MILLION", " BILLION", " TRILLION"};
         // I stop at 999 Trillion, because those number is huge already. Technically, we can add support for bigger number by extend this GROUPS LIST
